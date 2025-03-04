@@ -34,50 +34,81 @@
           </p>
         </div>
 
-        <p>1人当たり集金額: <span id="perPerson">-</span> 円</p>
-        <p>送金額(建替者含む場合): <span id="totalToSendReduce">-</span> 円</p>
-        <p>送金額(建替者含まない場合): <span id="totalToSend">-</span> 円</p>
+        <p>1人当たり集金額: <span name="perPerson">-</span> 円</p>
+        <p>建替者への送金額: <span name="totalToSendReduce">-</span> 円</p>
+        <p>※建替者含まない場合: <span name="totalToSend">-</span> 円</p>
       </div>
 
       <div class="procedure">
         <h3>2. 請求リンク準備</h3>
         <p>
-          この投稿下部にある「請求リンク取得方法」でメンバーへの請求リンクを準備する
+          LINEWORKSの「掲示板」 > 「体制・手順」> 「会計情報」>
+          の投稿下部にある「請求リンク取得方法」で<span name="perPerson">-</span
+          >円の請求リンクを準備してください
         </p>
       </div>
 
       <div class="procedure">
         <div class="announcement-header">
-          <h3>3. アナウンステキスト：</h3>
+          <h3>3. アナウンステキスト</h3>
           <button class="copy-button" onclick="copyToClipboard()">
             コピー
           </button>
         </div>
+        <p>
+          以下テキストの[集金名]と[支払いリンク]を置き換え、対象者を修正したテキストを全体LINEでアナウンスしてください
+        </p>
         <textarea id="announcementText" readonly></textarea>
       </div>
 
       <div class="procedure">
         <h3>4. 集金受付、受取を記録</h3>
         <p>
-          送金を受け取ったらスクショを撮り、「会計Drop Box」にアップロードする。
+          送金を受け取ったらスクショを撮り、<a
+            href="https://www.dropbox.com/sh/sic3lff8eg0435x/AABU9P81jek7OIOLNSYYqpEma?dl=0"
+            target="_blank"
+            >「会計Drop Box」</a
+          >
+          にアップロードしてください
         </p>
       </div>
 
       <div class="procedure">
         <h3>5. 建て替えてくれた人への送金</h3>
-        <p>PayPay友達の場合：「送る」> 「PayPayIDや電話番号で友達に送る」</p>
-        <p>友達ではない場合：「送金リンク取得方法」を参考にリンク取得し送信</p>
-        <p>送金後、スクショを会計Drop Boxにアップロード</p>
+        <p>
+          PayPayアプリ> 「送る」> 「PayPayIDや電話番号で友達に送る」で<span
+            name="totalToSendReduce"
+            >-</span
+          >
+          円を建て替えてくれた人に送金してください
+        </p>
+        <p>
+          PayPay友達ではない場合：LINEWORKSの「掲示板」 > 「体制・手順」>
+          「会計情報」> の投稿下部にある「送金リンク取得方法」を参考に<span
+            name="totalToSendReduce"
+            >-</span
+          >
+          円の送金リンク取得し建て替えてくれた人にLINEで送信してください
+        </p>
+        <p>
+          送金後、スクショを<a
+            href="https://www.dropbox.com/sh/sic3lff8eg0435x/AABU9P81jek7OIOLNSYYqpEma?dl=0"
+            target="_blank"
+            >「会計Drop Box」</a
+          >にアップロードしてください
+        </p>
       </div>
 
       <div class="procedure">
         <h3>6. 集金完了、確認依頼</h3>
-        <p>会計グループで集金・送金完了の報告、DropBoxスクショの確認依頼</p>
+        <p>
+          会計グループで集金・送金完了の報告をし、DropBoxスクショの確認依頼もしてください
+        </p>
       </div>
 
       <div class="procedure">
         <h3>7. スクショ確認、確認完了</h3>
-        <p>確認が問題なければ終了。</p>
+        <p>確認が問題なければ終了です。ありがとうございました。</p>
       </div>
     </div>
 

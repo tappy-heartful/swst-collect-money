@@ -38,10 +38,18 @@ function calculate() {
   }
 
   if (!valid) {
-    document.getElementById('perPerson').textContent = '-';
-    document.getElementById('totalToSend').textContent = '-';
-    document.getElementById('totalToSendReduce').textContent = '-';
-    document.getElementById('announcementText').value = ''; // アナウンステキストを空にする
+    document
+      .getElementsByName('perPerson')
+      .forEach((element) => (element.textContent = '-'));
+    document
+      .getElementsByName('totalToSend')
+      .forEach((element) => (element.textContent = '-'));
+    document
+      .getElementsByName('totalToSendReduce')
+      .forEach((element) => (element.textContent = '-'));
+    document
+      .getElementsByName('announcementText')
+      .forEach((element) => (element.value = '')); // アナウンステキストを空にする
     return;
   }
 
@@ -49,20 +57,31 @@ function calculate() {
   let adjustedTotal = numPeople * perPerson;
   let reducedTotal = numPeople * perPerson - perPerson;
 
-  document.getElementById('perPerson').textContent = perPerson;
-  document.getElementById('totalToSend').textContent = adjustedTotal;
-  document.getElementById('totalToSendReduce').textContent = reducedTotal;
+  // 各要素に対して値を設定
+  document
+    .getElementsByName('perPerson')
+    .forEach((element) => (element.textContent = perPerson));
+  document
+    .getElementsByName('totalToSend')
+    .forEach((element) => (element.textContent = adjustedTotal));
+  document
+    .getElementsByName('totalToSendReduce')
+    .forEach((element) => (element.textContent = reducedTotal));
 
   generateAnnouncementText(perPerson); // アナウンステキストを生成
 }
 
 // アナウンステキストを生成する関数
 function generateAnnouncementText(perPerson) {
+  // paypay受け取りリンク有効期限算出
+  let date = new Date();
+  date.setDate(date.getDate() + 14);
+  let formattedDate = date.toISOString().split('T')[0].replace(/-/g, '/');
   const announcementText = `
-【〇〇集金】
+【[集金名]の集金】
 
 お疲れ様です、会計です
-〇〇の集金を行いたいと思います
+[集金名]の集金を行いたいと思います
 お忙しいとは思いますが、下記リンクよりお支払いをお願いします
 
 ※また、送金者識別のため、送金前にPayPay表示名の確認をお願いします
@@ -72,7 +91,7 @@ https://paypay.ne.jp/app-view/edit-profile/#w_outlink
 ・1人${perPerson}円
 
 ⭐お支払い期限(リンク有効期限)
-・yyyy/MM/dd
+・${formattedDate}
 
 ⭐対象者
 〇サックス
@@ -125,6 +144,9 @@ function copyToClipboard() {
   // ボタン文言をチェックマークに変更
   const button = document.querySelector('.copy-button');
   button.textContent = '✔ ';
+
+  // ボタンにフォーカスを当てる
+  button.focus();
 
   // 1秒後に元に戻す
   setTimeout(() => {

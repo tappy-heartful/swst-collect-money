@@ -72,6 +72,7 @@ textarea {
   resize: none;
   background-color: #f9f9f9;
   box-sizing: border-box;
+  /* pointer-events: none; */
 }
 
 .copy-button {
