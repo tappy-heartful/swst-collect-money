@@ -69,6 +69,10 @@ function calculate() {
     .forEach((element) => (element.textContent = reducedTotal));
 
   generateAnnouncementText(perPerson); // アナウンステキストを生成
+
+  // 入力値をlocalStorageに保存
+  localStorage.setItem('totalAmount', totalAmount);
+  localStorage.setItem('numPeople', numPeople);
 }
 
 // アナウンステキストを生成する関数
@@ -155,9 +159,17 @@ function copyToClipboard() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // 初期値設定
-  document.getElementById('totalAmount').value = 3000;
-  document.getElementById('numPeople').value = 20;
+  // 初期値設定（localStorageから取得した値を使用）
+  const savedTotalAmount = localStorage.getItem('totalAmount');
+  const savedNumPeople = localStorage.getItem('numPeople');
+
+  // localStorageに保存された値があれば、それを使って初期化
+  document.getElementById('totalAmount').value = savedTotalAmount
+    ? savedTotalAmount
+    : 3000;
+  document.getElementById('numPeople').value = savedNumPeople
+    ? savedNumPeople
+    : 20;
 
   // 計算の初期化
   calculate();
