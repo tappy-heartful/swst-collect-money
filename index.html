@@ -36,15 +36,20 @@
 
         <p>1人当たり集金額: <span name="perPerson">-</span> 円</p>
         <p>建替者への送金額: <span name="totalToSendReduce">-</span> 円</p>
-        <p>※建替者含まない場合: <span name="totalToSend">-</span> 円</p>
+        <p>
+          ※集金対象者の中に建替者を含まない場合:
+          <span name="totalToSend">-</span> 円
+        </p>
       </div>
 
       <div class="procedure">
         <h3>2. 請求リンク準備</h3>
         <p>
           LINEWORKSの「掲示板」 > 「体制・手順」> 「会計情報」>
-          の投稿下部にある「請求リンク取得方法」で<span name="perPerson">-</span
-          >円の請求リンクを準備してください
+          の投稿下部にある「請求リンク取得方法」で<span name="perPerson"
+            >-</span
+          >
+          円の請求リンクを準備してください
         </p>
       </div>
 
@@ -56,7 +61,7 @@
           </button>
         </div>
         <p>
-          以下テキストの[集金名]と[支払いリンク]を置き換え、対象者を修正したテキストを全体LINEでアナウンスしてください
+          以下テキストの[集金名]と[支払いリンク]、対象者を修正したテキストを全体LINEでアナウンスしてください
         </p>
         <textarea id="announcementText" readonly></textarea>
       </div>
@@ -74,24 +79,31 @@
       </div>
 
       <div class="procedure">
-        <h3>5. 建て替えてくれた人への送金</h3>
+        <h3>5. 建替者への送金</h3>
         <p>
-          PayPayアプリ> 「送る」> 「PayPayIDや電話番号で友達に送る」で<span
+          建替者がPayPayの場合：PayPayアプリ> 「送る」>
+          「PayPayIDや電話番号で友達に送る」で<span name="totalToSendReduce"
+            >-</span
+          >
+          円を建替者に送金してください
+        </p>
+        <p>
+          建替者がPayPay友達ではない場合：LINEWORKSの「掲示板」 >
+          「体制・手順」> 「会計情報」>
+          の投稿下部にある「送金リンク取得方法」を参考に<span
             name="totalToSendReduce"
             >-</span
           >
-          円を建て替えてくれた人に送金してください
+          円の送金リンク取得し建替者にLINEで送信してください
         </p>
         <p>
-          PayPay友達ではない場合：LINEWORKSの「掲示板」 > 「体制・手順」>
-          「会計情報」> の投稿下部にある「送金リンク取得方法」を参考に<span
-            name="totalToSendReduce"
+          （↑集金対象者の中に建替者を含まない場合は<span name="totalToSend"
             >-</span
           >
-          円の送金リンク取得し建て替えてくれた人にLINEで送信してください
+          円としてください）
         </p>
         <p>
-          送金後、スクショを<a
+          送金した画面のスクショを<a
             href="https://www.dropbox.com/sh/sic3lff8eg0435x/AABU9P81jek7OIOLNSYYqpEma?dl=0"
             target="_blank"
             >「会計Drop Box」</a
@@ -107,7 +119,7 @@
       </div>
 
       <div class="procedure">
-        <h3>7. スクショ確認、確認完了</h3>
+        <h3>7. スクショ確認完了</h3>
         <p>確認が問題なければ終了です。ありがとうございました。</p>
       </div>
     </div>

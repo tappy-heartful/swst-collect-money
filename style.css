@@ -25,6 +25,11 @@ h2 {
   text-align: left;
 }
 
+/* 文中の可変部分は下線 */
+p span {
+  text-decoration: underline;
+}
+
 label {
   font-weight: bold;
   display: block;
