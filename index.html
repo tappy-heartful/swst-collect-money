@@ -6,11 +6,11 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no"
     />
-    <title>SWST会計集金計算</title>
+    <title>SWST会計集金フロー</title>
   </head>
   <body>
     <div class="container">
-      <h2>SWST会計集金計算</h2>
+      <h2>SWST会計集金フロー</h2>
       <label for="totalAmount">合計金額:</label>
       <input type="tel" id="totalAmount" placeholder="金額を入力" />
       <p id="totalAmountError" class="error-message">
@@ -35,6 +35,15 @@
         </p>
       </div>
 
+      <!-- 手順2: 請求リンク準備 -->
+      <div class="procedure">
+        <h3>請求リンク準備</h3>
+        <p>
+          LINEWORKSの「掲示板」 > 「体制・手順」> 「会計情報」>
+          の投稿下部にある「請求リンク取得方法」でメンバーへの請求リンクを準備する
+        </p>
+      </div>
+
       <!-- アナウンステキスト表示セクション -->
       <div class="announcement-container">
         <div class="announcement-header">
@@ -44,6 +53,29 @@
           </button>
         </div>
         <textarea id="announcementText" readonly></textarea>
+      </div>
+
+      <!-- 手順4以降: 集金受付、送金、確認 -->
+      <div class="procedure">
+        <h3>集金受付、受取を記録</h3>
+        <p>
+          送金を受け取ったらスクショを撮り、この投稿上部にある「会計Drop
+          Box」にアップロードする。
+        </p>
+      </div>
+      <div class="procedure">
+        <h3>建て替えてくれた人への送金</h3>
+        <p>PayPay友達の場合：「送る」> 「PayPayIDや電話番号で友達に送る」</p>
+        <p>友達ではない場合：「送金リンク取得方法」を参考にリンク取得し送信</p>
+        <p>送金後、スクショを会計Drop Boxにアップロード</p>
+      </div>
+      <div class="procedure">
+        <h3>集金完了、確認依頼</h3>
+        <p>会計グループで集金・送金完了の報告、DropBoxスクショの確認依頼</p>
+      </div>
+      <div class="procedure">
+        <h3>スクショ確認、確認完了</h3>
+        <p>確認が問題なければ終了。</p>
       </div>
     </div>
   </body>
