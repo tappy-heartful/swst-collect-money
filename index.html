@@ -13,26 +13,27 @@
     <div class="container">
       <h2>SWST会計集金フロー</h2>
 
-      <div class="input-group">
-        <label for="totalAmount">合計金額:</label>
-        <input type="tel" id="totalAmount" placeholder="金額を入力" />
-        <p id="totalAmountError" class="error-message">
-          正しい金額を入力してください。
-        </p>
-      </div>
+      <div class="procedure">
+        <h3>1. 集金額、送金額計算</h3>
+        <div class="input-group">
+          <label for="totalAmount">合計金額:</label>
+          <input type="tel" id="totalAmount" placeholder="金額を入力" />
+          <p id="totalAmountError" class="error-message">
+            正しい金額を入力してください。
+          </p>
+        </div>
 
-      <div class="input-group">
-        <label for="numPeople">人数:</label>
-        <input type="tel" id="numPeople" placeholder="人数を入力" />
-        <p id="numPeopleError" class="error-message">
-          正しい人数を入力してください。
-        </p>
-        <p id="invalidPeopleError" class="error-message">
-          人数は合計金額以下である必要があります。
-        </p>
-      </div>
+        <div class="input-group">
+          <label for="numPeople">人数:</label>
+          <input type="tel" id="numPeople" placeholder="人数を入力" />
+          <p id="numPeopleError" class="error-message">
+            正しい人数を入力してください。
+          </p>
+          <p id="invalidPeopleError" class="error-message">
+            人数は合計金額以下である必要があります。
+          </p>
+        </div>
 
-      <div class="result">
         <p>1人当たり集金額: <span id="perPerson">-</span> 円</p>
         <p>送金額(建替者含む場合): <span id="totalToSendReduce">-</span> 円</p>
         <p>送金額(建替者含まない場合): <span id="totalToSend">-</span> 円</p>
@@ -45,7 +46,7 @@
         </p>
       </div>
 
-      <div class="announcement-container">
+      <div class="procedure">
         <div class="announcement-header">
           <h3>3. アナウンステキスト：</h3>
           <button class="copy-button" onclick="copyToClipboard()">
