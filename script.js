@@ -132,7 +132,7 @@ https://paypay.ne.jp/app-view/edit-profile/#w_outlink
 ・咲人くん
 
 ⭐支払いリンク
-[支払いリンク]
+[請求リンク]
       `;
 
   const textarea = document.getElementById('announcementText');
