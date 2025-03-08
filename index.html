@@ -14,8 +14,20 @@
       <h2>SWST会計集金フロー</h2>
 
       <div class="procedure">
-        <h3>1. 集金額、送金額計算</h3>
+        <h3>1. 合計金額、集金対象者を決定</h3>
+        <p>
+          ①イベント終了後お金を払ってくれた人に合計金額を確認し、会計グループラインで報告してください<br />
+          ②会計グループラインで集金対象者を確認して下さい<br />
+          ※①、②についてはバンドマスターの合意を取ってください
+        </p>
+      </div>
+
+      <div class="procedure">
+        <h3>2. 集金額、送金額計算</h3>
         <div class="input-group">
+          <p>
+            以下に今回の「合計金額」と「集金対象者の人数」を入力し、「1人当たり集金額」と「建替者への送金額」を算出してください
+          </p>
           <label for="totalAmount">合計金額:</label>
           <input type="tel" id="totalAmount" placeholder="金額を入力" />
           <p id="totalAmountError" class="error-message">
@@ -24,7 +36,7 @@
         </div>
 
         <div class="input-group">
-          <label for="numPeople">人数:</label>
+          <label for="numPeople">集金対象者の人数:</label>
           <input type="tel" id="numPeople" placeholder="人数を入力" />
           <p id="numPeopleError" class="error-message">
             正しい人数を入力してください。
@@ -43,7 +55,7 @@
       </div>
 
       <div class="procedure">
-        <h3>2. 請求リンク準備</h3>
+        <h3>3. 請求リンク準備</h3>
         <p>
           LINEWORKSの「掲示板」 > 「体制・手順」> 「会計情報」>
           の投稿下部にある「請求リンク取得方法」で<span name="perPerson"
@@ -55,7 +67,7 @@
 
       <div class="procedure">
         <div class="announcement-header">
-          <h3>3. アナウンステキスト</h3>
+          <h3>4. アナウンステキスト</h3>
           <button class="copy-button" onclick="copyToClipboard()">
             コピー
           </button>
@@ -67,7 +79,7 @@
       </div>
 
       <div class="procedure">
-        <h3>4. 集金受付、受取を記録</h3>
+        <h3>5. 集金受付、受取を記録</h3>
         <p>
           送金を受け取ったらスクショを撮り、<a
             href="https://www.dropbox.com/sh/sic3lff8eg0435x/AABU9P81jek7OIOLNSYYqpEma?dl=0"
@@ -79,7 +91,7 @@
       </div>
 
       <div class="procedure">
-        <h3>5. 建替者への送金</h3>
+        <h3>6. 建替者への送金</h3>
         <p>
           自分と建替者がPayPay友達の場合：<br />PayPayアプリ> 「送る」>
           「PayPayIDや電話番号で友達に送る」で<span name="totalToSendReduce"
@@ -112,14 +124,14 @@
       </div>
 
       <div class="procedure">
-        <h3>6. 集金完了、確認依頼</h3>
+        <h3>7. 集金完了、確認依頼</h3>
         <p>
           会計グループで集金・送金完了の報告をし、DropBoxスクショの確認依頼もしてください
         </p>
       </div>
 
       <div class="procedure">
-        <h3>7. スクショ確認完了</h3>
+        <h3>8. スクショ確認完了</h3>
         <p>確認が問題なければ終了です。ありがとうございました。</p>
       </div>
     </div>

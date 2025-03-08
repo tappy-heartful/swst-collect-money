@@ -86,7 +86,7 @@ function generateAnnouncementText(perPerson) {
 
 お疲れ様です、会計です
 [集金名]の集金を行いたいと思います
-お忙しいとは思いますが、下記リンクよりお支払いをお願いします
+お支払いが難しい場合、私までご連絡ください
 
 ※また、送金者識別のため、送金前にPayPay表示名の確認をお願いします
 https://paypay.ne.jp/app-view/edit-profile/#w_outlink
