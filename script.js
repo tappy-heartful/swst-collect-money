@@ -88,7 +88,7 @@ function generateAnnouncementText(perPerson) {
 [集金名]の集金を行いたいと思います
 お支払いが難しい場合、私までご連絡ください
 
-※また、送金前に、PayPay表示名を送金者が識別できるものに設定お願いします
+※また、送金前にPayPay表示名を「送金者が識別できる程度のもの」に設定お願いします
 https://paypay.ne.jp/app-view/edit-profile/#w_outlink
 
 ⭐お支払い金額
