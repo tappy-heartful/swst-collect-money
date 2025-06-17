@@ -9,12 +9,22 @@
   <body>
     <div class="container">
       <h2>📨 催促メッセージ生成</h2>
-
+      <div class="procedure">
+        <h3>💡 まずは状況を確認</h3>
+        <p>
+          以下のスプレッドシートから、未支払者の方がいるかどうかをご確認ください。<br />
+          <a
+            href="https://docs.google.com/spreadsheets/d/1VwAu9Ksbs3y7dPBV_C2pkRnETQLVV03jZu9Z95Nkqm8/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ▶ スプレッドシートを開く
+          </a>
+        </p>
+      </div>
       <div class="procedure">
         <h3>1. 催促情報を入力</h3>
-        <p>
-          以下の情報を入力し、LINEグループに送る催促メッセージを作成します。
-        </p>
+        <p>以下の情報を入力し、催促メッセージを作成します。</p>
 
         <div class="input-group">
           <label for="collectionName">集金名:</label>
@@ -44,14 +54,14 @@
           <input type="number" id="amount" placeholder="例：1500" />
         </div>
 
-        <div class="input-group">
+        <!-- <div class="input-group">
           <label for="names">滞納者名（改行区切り）:</label>
           <textarea
             id="names"
             rows="5"
             placeholder="例：スウィング太郎&#10;アドリブ次郎"
           ></textarea>
-        </div>
+        </div> -->
 
         <button class="copy-button" onclick="generateMessage()">
           ▶ メッセージ生成
@@ -69,7 +79,7 @@
             コピー
           </button>
         </div>
-        <p>以下のメッセージをコピペしてLINEグループに送ってください。</p>
+        <p>以下のメッセージをコピペして未支払者に送ってください。</p>
         <textarea
           id="output"
           readonly
@@ -83,7 +93,6 @@
         <ul>
           <li>敬意を持った表現を心がけましょう。</li>
           <li>夜遅い時間の送信は控えてください。</li>
-          <li>毎週金曜 or 月曜朝など、定期送信を推奨します。</li>
         </ul>
       </div>
       <a class="back-link" href="../index.html">← TOPへ戻る</a>
@@ -97,14 +106,14 @@
         const payid = paypaySelect.value.trim(); // PayPay ID
         const collectorName =
           paypaySelect.options[paypaySelect.selectedIndex].text; // 担当者名
-        const names = document.getElementById('names').value.trim();
+        // const names = document.getElementById('names').value.trim();
         const link =
           'https://tappy-heartful.github.io/swst-collect-money/member/pay-delay.html';
 
         const message = `📢【お支払いのお願い】
 
 会計よりご連絡です🙇‍♀️
-「${title}」について、まだお支払いの確認が取れていない方がいらっしゃるようです。
+「${title}」について、まだお支払いの確認が取れていません
 
 お手数ですが、内容をご確認のうえ、ご対応をお願いいたします🙏
 
@@ -112,9 +121,6 @@
 ■ 金額：${amount}円
 ■ PayPay ID：@${payid}
 （${collectorName}）
-
-【該当の方】
-${names}
 
 🔗 支払い方法のご案内：
 ${link}
