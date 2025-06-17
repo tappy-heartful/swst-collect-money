@@ -26,7 +26,7 @@
         </div>
 
         <div class="input-group">
-          <label for="paypayId">集金担当者のPayPay ID:</label>
+          <label for="paypayId">集金担当者:</label>
           <select id="paypayId">
             <option value="" disabled selected>選択してください</option>
             <option value="tappy_heartful">たぴ</option>
@@ -89,7 +89,10 @@
       function generateMessage() {
         const title = document.getElementById('collectionName').value.trim();
         const amount = document.getElementById('amount').value.trim();
-        const payid = document.getElementById('paypayId').value.trim();
+        const paypaySelect = document.getElementById('paypayId');
+        const payid = paypaySelect.value.trim(); // PayPay ID
+        const collectorName =
+          paypaySelect.options[paypaySelect.selectedIndex].text; // 担当者名
         const names = document.getElementById('names').value.trim();
         const link =
           'https://tappy-heartful.github.io/swst-collect-money/how-to-pay.html';
@@ -103,7 +106,7 @@
 
 ■ 集金名：${title}
 ■ 金額：${amount}円
-■ PayPay ID：@${payid}
+■ 担当者：${collectorName}（PayPay ID：@${payid}）
 
 【該当の方】
 ${names}
