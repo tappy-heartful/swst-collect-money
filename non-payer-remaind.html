@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>滞納者催促ツール</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>滞納者催促ツール<br />（催促担当者向け）</h2>
+
+      <div class="procedure">
+        <h3>1. 催促情報を入力</h3>
+        <p>
+          以下の情報を入力し、LINEグループに送る催促メッセージを作成します。
+        </p>
+
+        <div class="input-group">
+          <label for="collectionName">集金名:</label>
+          <input
+            type="text"
+            id="collectionName"
+            placeholder="例：4月スタジオ代"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="paypayId">集金担当者のPayPay ID:</label>
+          <select id="paypayId">
+            <option value="" disabled selected>選択してください</option>
+            <option value="example_id1">example_id1</option>
+            <option value="example_id2">example_id2</option>
+            <option value="example_id3">example_id3</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="amount">請求金額（円）:</label>
+          <input type="number" id="amount" placeholder="例：1500" />
+        </div>
+
+        <div class="input-group">
+          <label for="names">滞納者名（改行区切り）:</label>
+          <textarea
+            id="names"
+            rows="5"
+            placeholder="例：山田太郎&#10;佐藤ひかり"
+          ></textarea>
+        </div>
+
+        <button class="copy-button" onclick="generateMessage()">
+          ▶ メッセージ生成
+        </button>
+      </div>
+
+      <div class="procedure">
+        <div class="announcement-header">
+          <h3>2. LINE投稿用メッセージ</h3>
+          <button class="copy-button" onclick="copyToClipboard()">
+            コピー
+          </button>
+        </div>
+        <p>以下のメッセージをコピペしてLINEグループに送ってください。</p>
+        <textarea
+          id="output"
+          readonly
+          rows="10"
+          placeholder="ここに生成メッセージが表示されます"
+        ></textarea>
+      </div>
+
+      <div class="procedure">
+        <h3>3. 注意事項</h3>
+        <ul>
+          <li>敬意を持った表現を心がけましょう。</li>
+          <li>夜遅い時間の送信は控えてください。</li>
+          <li>毎週金曜 or 月曜朝など、定期送信を推奨します。</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function generateMessage() {
+        const title = document.getElementById('collectionName').value.trim();
+        const amount = document.getElementById('amount').value.trim();
+        const payid = document.getElementById('paypayId').value.trim();
+        const names = document.getElementById('names').value.trim();
+        const link =
+          'https://tappy-heartful.github.io/swst-collect-money/how-to-pay.html';
+
+        const message = `📢【未払いのお知らせ】
+
+お疲れ様です。
+まだ「${title}」の集金が確認できていません👇
+
+■ 集金名：${title}
+■ 金額：${amount}円
+■ PayPay ID：@${payid}
+
+【滞納者一覧】
+${names}
+
+🔗 支払い方法はこちら：
+${link}
+
+お手数ですが早めの対応をお願いします🙇‍♀️🙇`;
+
+        document.getElementById('output').value = message;
+      }
+
+      function copyToClipboard() {
+        const text = document.getElementById('output').value;
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            alert('コピーしました！');
+          })
+          .catch(() => {
+            alert('コピーに失敗しました');
+          });
+      }
+    </script>
+  </body>
+</html>
