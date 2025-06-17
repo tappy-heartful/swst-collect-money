@@ -90,22 +90,26 @@
         const link =
           'https://tappy-heartful.github.io/swst-collect-money/how-to-pay.html';
 
-        const message = `📢【未払いのお知らせ】
+        const message = `📢【お支払いのお願い】
 
-お疲れ様です。
-まだ「${title}」の集金が確認できていません
+                          会計よりご連絡です🙇‍♀️
+                          「${title}」について、まだお支払いの確認が取れていない方がいらっしゃるようです。
 
-■ 集金名：${title}
-■ 金額：${amount}円
-■ PayPay ID：@${payid}
+                          お手数ですが、内容をご確認のうえ、ご対応をお願いいたします🙏
 
-【滞納者一覧】
-${names}
+                          ■ 集金名：${title}
+                          ■ 金額：${amount}円
+                          ■ PayPay ID：@${payid}
 
-🔗 支払い方法はこちら：
-${link}
+                          【該当の方】
+                          ${names}
 
-お手数ですが早めの対応をお願いします🙇‍♀️🙇`;
+                          🔗 支払い方法のご案内：
+                          ${link}
+
+                          すでにお支払いいただいている場合は、行き違いでしたら申し訳ありません。その際はスルーしてください！
+
+                          よろしくお願いいたします🌸`;
 
         document.getElementById('output').value = message;
       }
