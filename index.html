@@ -2,141 +2,80 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no"
-    />
-    <title>会計集金フロー</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWST 集金関連ツール</title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', sans-serif;
+        background-color: #f7f9fb;
+        color: #333;
+        margin: 0;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin: 1rem 0;
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+        background: #3fa9f5;
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background 0.2s ease;
+      }
+
+      a:hover {
+        background: #3290da;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #777;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <h2>会計集金フロー</h2>
-
-      <div class="procedure">
-        <h3>1. 合計金額、集金対象者を決定</h3>
-        <p>
-          ①イベント終了後お金を払ってくれた人に合計金額を確認してください<br />
-          ②会計グループラインで集金対象者を確認してください<br />
-          ※①、②についてはバンドマスターの合意を取ってください
-        </p>
-      </div>
-
-      <div class="procedure">
-        <h3>2. 集金額、送金額計算</h3>
-        <div class="input-group">
-          <p>
-            以下に今回の「合計金額」と「集金対象者の人数」を入力し、「1人当たり集金額」と「建替者への送金額」を算出してください
-          </p>
-          <label for="totalAmount">合計金額:</label>
-          <input type="tel" id="totalAmount" placeholder="金額を入力" />
-          <p id="totalAmountError" class="error-message">
-            正しい金額を入力してください。
-          </p>
-        </div>
-
-        <div class="input-group">
-          <label for="numPeople">集金対象者の人数:</label>
-          <input type="tel" id="numPeople" placeholder="人数を入力" />
-          <p id="numPeopleError" class="error-message">
-            正しい人数を入力してください。
-          </p>
-          <p id="invalidPeopleError" class="error-message">
-            人数は合計金額以下である必要があります。
-          </p>
-        </div>
-
-        <p>1人当たり集金額: <span name="perPerson">-</span> 円</p>
-        <p>建替者への送金額: <span name="totalToSendReduce">-</span> 円</p>
-        <p>
-          ※集金対象者の中に建替者を含まない場合:
-          <span name="totalToSend">-</span> 円
-        </p>
-      </div>
-
-      <div class="procedure">
-        <h3>3. 請求リンク準備</h3>
-        <p>
-          LINEWORKSの「掲示板」 > 「体制・手順」> 「会計情報」>
-          の投稿下部にある「請求リンク取得方法」で<span name="perPerson"
-            >-</span
-          >
-          円の請求リンクを準備してください
-        </p>
-      </div>
-
-      <div class="procedure">
-        <div class="announcement-header">
-          <h3>4. アナウンステキスト</h3>
-          <button class="copy-button" onclick="copyToClipboard()">
-            コピー
-          </button>
-        </div>
-        <p>
-          以下テキストの[集金名]と[請求リンク]、[対象者]を修正したテキストを全体LINEでアナウンスしてください
-        </p>
-        <textarea id="announcementText" readonly></textarea>
-      </div>
-
-      <div class="procedure">
-        <h3>5. 集金受付、受取を記録</h3>
-        <p>
-          送金を受け取ったらスクショを撮り、<a
-            href="https://www.dropbox.com/sh/sic3lff8eg0435x/AABU9P81jek7OIOLNSYYqpEma?dl=0"
-            target="_blank"
-            >「会計Drop Box」</a
-          >
-          にアップロードしてください<br />
-          ※対象のフォルダがまだない場合、ほかに倣って作成してください
-        </p>
-      </div>
-
-      <div class="procedure">
-        <h3>6. 建替者への送金</h3>
-        <p>
-          自分と建替者がPayPay友達の場合：<br />PayPayアプリ> 「送る」>
-          「PayPayIDや電話番号で友達に送る」で<span name="totalToSendReduce"
-            >-</span
-          >
-          円を建替者に送金してください
-        </p>
-        <p>
-          自分と建替者がPayPay友達ではない場合：<br />LINEWORKSの「掲示板」 >
-          「体制・手順」> 「会計情報」>
-          の投稿下部にある「送金リンク取得方法」を参考に<span
-            name="totalToSendReduce"
-            >-</span
-          >
-          円の送金リンク取得し建替者にLINEで送信してください
-        </p>
-        <p>
-          （↑集金対象者の中に建替者を含まない場合は<span name="totalToSend"
-            >-</span
-          >
-          円としてください）
-        </p>
-        <p>
-          送金した画面のスクショを<a
-            href="https://www.dropbox.com/sh/sic3lff8eg0435x/AABU9P81jek7OIOLNSYYqpEma?dl=0"
-            target="_blank"
-            >「会計Drop Box」</a
-          >にアップロードしてください
-        </p>
-      </div>
-
-      <div class="procedure">
-        <h3>7. 集金完了、確認依頼</h3>
-        <p>
-          会計グループで集金・送金完了の報告をし、DropBoxスクショの確認依頼もしてください
-        </p>
-      </div>
-
-      <div class="procedure">
-        <h3>8. スクショ確認完了</h3>
-        <p>確認が問題なければ終了です。ありがとうございました。</p>
-      </div>
+      <h1>SWST 集金関連ツール</h1>
+      <ul>
+        <li>
+          <a href="announce.html">📣 通常の集金アナウンス作成</a>
+        </li>
+        <li>
+          <a href="how-to-pay.html">💸 滞納者向け支払いガイド</a>
+        </li>
+        <li>
+          <a href="remainder.html">📨 催促担当者向けメッセージ生成</a>
+        </li>
+      </ul>
     </div>
 
-    <script src="script.js"></script>
+    <footer>&copy; 2025 SWST Collect Team</footer>
   </body>
 </html>
