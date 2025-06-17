@@ -77,15 +77,21 @@ function calculate() {
 
 // アナウンステキストを生成する関数
 function generateAnnouncementText(perPerson) {
-  // paypay受け取りリンク有効期限算出
+  let collectionName = document.getElementById('collectionName').value.trim();
+  let paymentLink = document.getElementById('paymentLink').value.trim();
+
+  if (!collectionName) collectionName = '[集金名]';
+  if (!paymentLink) paymentLink = '[請求リンク]';
+
   let date = new Date();
   date.setDate(date.getDate() + 14);
   let formattedDate = date.toISOString().split('T')[0].replace(/-/g, '/');
+
   const announcementText = `
-【[集金名]の集金】
+【${collectionName}の集金】
 
 お疲れ様です、会計です
-[集金名]の集金を行いたいと思います
+${collectionName}の集金を行いたいと思います
 お支払いが難しい場合、私までご連絡ください
 
 ※また、送金前にPayPay表示名を「送金者が識別できる程度のもの」に設定お願いします
@@ -132,8 +138,8 @@ https://paypay.ne.jp/app-view/edit-profile/#w_outlink
 ・咲人くん
 
 ⭐支払いリンク
-[請求リンク]
-      `;
+${paymentLink}
+  `;
 
   const textarea = document.getElementById('announcementText');
   textarea.value = announcementText;
@@ -177,4 +183,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // 入力イベントの追加
   document.getElementById('totalAmount').addEventListener('input', calculate);
   document.getElementById('numPeople').addEventListener('input', calculate);
+  document
+    .getElementById('collectionName')
+    .addEventListener('input', calculate);
+  document.getElementById('paymentLink').addEventListener('input', calculate);
 });
