@@ -7,25 +7,36 @@
     <style>
       body {
         font-family: 'Helvetica Neue', sans-serif;
-        background-color: #f7f9fb;
+        background-color: #eef2f5;
         color: #333;
         margin: 0;
         padding: 2rem;
       }
 
       .container {
-        max-width: 600px;
+        max-width: 700px;
         margin: auto;
         background: #fff;
         padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       }
 
       h1 {
         text-align: center;
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      section {
+        margin-bottom: 2rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        border-left: 6px solid #ccc;
+        padding-left: 0.75rem;
       }
 
       ul {
@@ -34,13 +45,14 @@
       }
 
       li {
-        margin: 1rem 0;
+        margin: 0.75rem 0;
       }
 
-      a {
+      /* 一般メンバー向けリンク */
+      .member-link a {
         display: block;
         text-decoration: none;
-        background: #3fa9f5;
+        background: #48c774;
         color: white;
         padding: 1rem;
         border-radius: 8px;
@@ -48,13 +60,29 @@
         transition: background 0.2s ease;
       }
 
-      a:hover {
-        background: #3290da;
+      .member-link a:hover {
+        background: #3bb86b;
+      }
+
+      /* 会計係向けリンク */
+      .staff-link a {
+        display: block;
+        text-decoration: none;
+        background: #3273dc;
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background 0.2s ease;
+      }
+
+      .staff-link a:hover {
+        background: #275ab4;
       }
 
       footer {
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 3rem;
         font-size: 0.9rem;
         color: #777;
       }
@@ -63,17 +91,21 @@
   <body>
     <div class="container">
       <h1>SWST 集金関連ツール</h1>
-      <ul>
-        <li>
-          <a href="announce.html">📣 通常の集金アナウンス作成</a>
-        </li>
-        <li>
-          <a href="how-to-pay.html">💸 滞納者向け支払いガイド</a>
-        </li>
-        <li>
-          <a href="remainder.html">📨 催促担当者向けメッセージ生成</a>
-        </li>
-      </ul>
+
+      <section>
+        <h2>👥 一般メンバー向け</h2>
+        <ul class="member-link">
+          <li><a href="how-to-pay.html">💸 滞納者向け支払いガイド</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>📋 会計係・催促担当向け</h2>
+        <ul class="staff-link">
+          <li><a href="announce.html">📣 通常の集金アナウンス作成</a></li>
+          <li><a href="remainder.html">📨 催促メッセージ生成</a></li>
+        </ul>
+      </section>
     </div>
 
     <footer>&copy; 2025 SWST Collect Team</footer>
