@@ -29,9 +29,7 @@
           <label for="paypayId">集金担当者のPayPay ID:</label>
           <select id="paypayId">
             <option value="" disabled selected>選択してください</option>
-            <option value="example_id1">example_id1</option>
-            <option value="example_id2">example_id2</option>
-            <option value="example_id3">example_id3</option>
+            <option value="tappy_heartful">藤本拓海</option>
           </select>
         </div>
 
@@ -92,24 +90,24 @@
 
         const message = `📢【お支払いのお願い】
 
-                          会計よりご連絡です🙇‍♀️
-                          「${title}」について、まだお支払いの確認が取れていない方がいらっしゃるようです。
+会計よりご連絡です🙇‍♀️
+「${title}」について、まだお支払いの確認が取れていない方がいらっしゃるようです。
 
-                          お手数ですが、内容をご確認のうえ、ご対応をお願いいたします🙏
+お手数ですが、内容をご確認のうえ、ご対応をお願いいたします🙏
 
-                          ■ 集金名：${title}
-                          ■ 金額：${amount}円
-                          ■ PayPay ID：@${payid}
+■ 集金名：${title}
+■ 金額：${amount}円
+■ PayPay ID：@${payid}
 
-                          【該当の方】
-                          ${names}
+【該当の方】
+${names}
 
-                          🔗 支払い方法のご案内：
-                          ${link}
+🔗 支払い方法のご案内：
+${link}
 
-                          すでにお支払いいただいている場合は、行き違いでしたら申し訳ありません。その際はスルーしてください！
+すでにお支払いいただいている場合は、行き違いでしたら申し訳ありません。その際はスルーしてください！
 
-                          よろしくお願いいたします🌸`;
+よろしくお願いいたします🌸`;
 
         document.getElementById('output').value = message;
       }
