@@ -150,3 +150,21 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(63, 169, 245, 0.2);
   outline: none;
 }
+
+
+/* 戻るボタン */
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  text-decoration: none;
+  color: #3bb86b;
+  font-weight: bold;
+  border: 2px solid #3bb86b;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.back-link:hover {
+  background-color: #d8f7de;
+}
