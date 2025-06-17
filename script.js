@@ -94,8 +94,8 @@ function generateAnnouncementText(perPerson) {
 ${collectionName}の集金を行いたいと思います
 お支払いが難しい場合、私までご連絡ください
 
-※また、送金前にPayPay表示名を「送金者が識別できる程度のもの」に設定お願いします
-https://paypay.ne.jp/app-view/edit-profile/#w_outlink
+※また、送金前に以下をご確認ください
+https://tappy-heartful.github.io/swst-collect-money/member/pay-guide.html
 
 ⭐お支払い金額
 ・1人${perPerson}円
