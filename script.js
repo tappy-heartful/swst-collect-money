@@ -92,9 +92,8 @@ function generateAnnouncementText(perPerson) {
 
 お疲れ様です、会計です
 ${collectionName}の集金を行いたいと思います
-お支払いが難しい場合、私までご連絡ください
 
-※また、送金前に以下をご確認ください
+以下をご確認の上、お支払いをお願いいたします
 https://tappy-heartful.github.io/swst-collect-money/member/pay-guide.html
 
 ⭐お支払い金額
