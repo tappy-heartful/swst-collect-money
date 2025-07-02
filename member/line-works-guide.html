@@ -156,7 +156,7 @@
           <td>
             <div class="copy-group">
               <span class="copy-code" id="id-sax">ssjo_sax@works-463406</span>
-              <button class="copy-button" onclick="copyText('id-sax')">
+              <button class="copy-button" onclick="copyText('id-sax', event)">
                 コピー
               </button>
             </div>
@@ -167,7 +167,7 @@
           <td>
             <div class="copy-group">
               <span class="copy-code" id="id-tp">ssjo_tp@works-463406</span>
-              <button class="copy-button" onclick="copyText('id-tp')">
+              <button class="copy-button" onclick="copyText('id-tp', event)">
                 コピー
               </button>
             </div>
@@ -178,7 +178,7 @@
           <td>
             <div class="copy-group">
               <span class="copy-code" id="id-tb">ssjo_tb@works-463406</span>
-              <button class="copy-button" onclick="copyText('id-tb')">
+              <button class="copy-button" onclick="copyText('id-tb', event)">
                 コピー
               </button>
             </div>
@@ -191,7 +191,10 @@
               <span class="copy-code" id="id-rhythm"
                 >ssjo_rhythm@works-463406</span
               >
-              <button class="copy-button" onclick="copyText('id-rhythm')">
+              <button
+                class="copy-button"
+                onclick="copyText('id-rhythm', event)"
+              >
                 コピー
               </button>
             </div>
@@ -204,7 +207,9 @@
         <div class="copy-group">
           パスワード：
           <span class="copy-code" id="pw">twofive1</span>
-          <button class="copy-button" onclick="copyText('pw')">コピー</button>
+          <button class="copy-button" onclick="copyText('pw', event)">
+            コピー
+          </button>
         </div>
       </div>
 
@@ -225,7 +230,7 @@
     <footer>&copy; 2025 SSJO 管理チーム</footer>
 
     <script>
-      function copyText(id) {
+      function copyText(id, event) {
         const text = document.getElementById(id).textContent;
         navigator.clipboard.writeText(text).then(() => {
           const btn = event.target;
