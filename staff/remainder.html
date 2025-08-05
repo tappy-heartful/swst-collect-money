@@ -211,6 +211,24 @@ ${link}
           if (errorEl) errorEl.textContent = '';
         });
       }
+
+      // クリップボードにコピー
+      function copyToClipboard() {
+        const text = document.getElementById('output').value;
+        navigator.clipboard.writeText(text);
+
+        // ボタン文言をチェックマークに変更
+        const button = document.getElementById('copy-button');
+        button.textContent = '✔ ';
+
+        // ボタンにフォーカスを当てる
+        button.focus();
+
+        // 1秒後に元に戻す
+        setTimeout(() => {
+          button.textContent = 'コピー';
+        }, 1000);
+      }
     </script>
   </body>
 </html>
