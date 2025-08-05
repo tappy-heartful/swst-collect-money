@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>📬 催促メッセージ生成</title>
     <link rel="stylesheet" href="../style.css" />
+    <style>
+      .input-error {
+        border: 2px solid red;
+        background-color: #ffecec;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 4px;
+        font-size: 0.9em;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -33,6 +45,7 @@
             id="collectionName"
             placeholder="例：2023/03/25 練習会場費"
           />
+          <div id="collectionNameError" class="error-message"></div>
         </div>
 
         <div class="input-group">
@@ -46,11 +59,13 @@
             <option value="eri0325ka">桂木恵利佳</option>
             <option value="nirubay">籔隼大</option>
           </select>
+          <div id="paypayIdError" class="error-message"></div>
         </div>
 
         <div class="input-group">
           <label for="amount">請求金額（円）:</label>
           <input type="number" id="amount" placeholder="例：1500" />
+          <div id="amountError" class="error-message"></div>
         </div>
 
         <!-- <div class="input-group">
@@ -100,13 +115,49 @@
 
     <script>
       function generateMessage() {
-        const title = document.getElementById('collectionName').value.trim();
-        const amount = document.getElementById('amount').value.trim();
+        // 初期化
+        document.getElementById('output').value = '';
+
+        // 入力値取得
+        const titleInput = document.getElementById('collectionName');
+        const amountInput = document.getElementById('amount');
         const paypaySelect = document.getElementById('paypayId');
-        const payid = paypaySelect.value.trim(); // PayPay ID
+
+        const title = titleInput.value.trim();
+        const amount = amountInput.value.trim();
+        const payid = paypaySelect.value.trim();
         const collectorName =
-          paypaySelect.options[paypaySelect.selectedIndex].text; // 担当者名
-        // const names = document.getElementById('names').value.trim();
+          paypaySelect.options[paypaySelect.selectedIndex]?.text;
+
+        // エラー初期化
+        clearErrors();
+
+        let hasError = false;
+
+        if (!title) {
+          setError(
+            titleInput,
+            'collectionNameError',
+            '集金名を入力してください'
+          );
+          hasError = true;
+        }
+        if (!payid) {
+          setError(
+            paypaySelect,
+            'paypayIdError',
+            '集金担当者を選択してください'
+          );
+          hasError = true;
+        }
+        if (!amount) {
+          setError(amountInput, 'amountError', '金額を入力してください');
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        // メッセージ生成
         const link =
           'https://tappy-heartful.github.io/swst-collect-money/member/pay-delay.html';
 
@@ -132,21 +183,24 @@ ${link}
         document.getElementById('output').value = message;
       }
 
-      function copyToClipboard() {
-        const text = document.getElementById('output').value;
-        navigator.clipboard.writeText(text);
+      // エラー表示関数
+      function setError(inputEl, errorId, message) {
+        inputEl.classList.add('input-error');
+        const errorEl = document.getElementById(errorId);
+        if (errorEl) {
+          errorEl.textContent = message;
+        }
+      }
 
-        // ボタン文言をチェックマークに変更
-        const button = document.getElementById('copy-button');
-        button.textContent = '✔ ';
-
-        // ボタンにフォーカスを当てる
-        button.focus();
-
-        // 1秒後に元に戻す
-        setTimeout(() => {
-          button.textContent = 'コピー';
-        }, 1000);
+      // エラー初期化関数
+      function clearErrors() {
+        const errorFields = ['collectionName', 'amount', 'paypayId'];
+        errorFields.forEach((id) => {
+          const inputEl = document.getElementById(id);
+          const errorEl = document.getElementById(id + 'Error');
+          if (inputEl) inputEl.classList.remove('input-error');
+          if (errorEl) errorEl.textContent = '';
+        });
       }
     </script>
   </body>
