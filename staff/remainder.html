@@ -39,12 +39,14 @@
         <p>以下の情報を入力し、催促メッセージを作成します。</p>
 
         <div class="input-group">
+          <label for="date">日付</label>
+          <input type="text" id="date" placeholder="例：2023/03/25" />
+          <div id="dateError" class="error-message"></div>
+        </div>
+
+        <div class="input-group">
           <label for="collectionName">集金名:</label>
-          <input
-            type="text"
-            id="collectionName"
-            placeholder="例：2023/03/25 練習会場費"
-          />
+          <input type="text" id="collectionName" placeholder="例：練習会場費" />
           <div id="collectionNameError" class="error-message"></div>
         </div>
 
@@ -119,10 +121,12 @@
         document.getElementById('output').value = '';
 
         // 入力値取得
+        const dateInput = document.getElementById('date');
         const titleInput = document.getElementById('collectionName');
         const amountInput = document.getElementById('amount');
         const paypaySelect = document.getElementById('paypayId');
 
+        const date = dateInput.value.trim();
         const title = titleInput.value.trim();
         const amount = amountInput.value.trim();
         const payid = paypaySelect.value.trim();
@@ -134,6 +138,10 @@
 
         let hasError = false;
 
+        if (!date) {
+          setError(dateInput, 'dateError', '日付を入力してください');
+          hasError = true;
+        }
         if (!title) {
           setError(
             titleInput,
@@ -164,10 +172,11 @@
         const message = `📢【お支払いのお願い】
 
 お疲れ様です、SSJO会計よりご連絡です🙇‍♀️
-「${title}」について、まだお支払いの確認が取れていません
+「${date} ${title}」について、まだお支払いの確認が取れていません
 
 お手数ですが、内容をご確認のうえ、ご対応をお願いいたします🙏
 
+■ 日付：${date}
 ■ 集金名：${title}
 ■ 金額：${amount}円
 ■ PayPay ID：${payid}
