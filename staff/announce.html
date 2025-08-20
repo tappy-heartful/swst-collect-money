@@ -68,12 +68,12 @@
       <div class="procedure">
         <h3>4. 集金名・請求リンクの入力</h3>
         <div class="input-group">
+          <div class="input-group">
+            <label for="collectionDate">日付:</label>
+            <input type="date" id="collectionDate" />
+          </div>
           <label for="collectionName">集金名:</label>
-          <input
-            type="text"
-            id="collectionName"
-            placeholder="例: 2023/03/25 練習会場費"
-          />
+          <input type="text" id="collectionName" placeholder="例: 練習会場費" />
         </div>
         <div class="input-group">
           <label for="paymentLink">請求リンク:</label>
@@ -88,7 +88,9 @@
             コピー
           </button>
         </div>
-        <p>以下テキストを全体LINEでアナウンスしてください</p>
+        <p>
+          以下の[対象者]を修正したテキストを全体LINEでアナウンスしてください
+        </p>
         <textarea id="announcementText" readonly></textarea>
       </div>
 

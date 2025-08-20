@@ -36,6 +36,12 @@ label {
   margin-bottom: 5px;
 }
 
+.result-highlight {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #d9534f; /* 赤で目立たせる */
+}
+
 input {
   width: 100%;
   padding: 10px;

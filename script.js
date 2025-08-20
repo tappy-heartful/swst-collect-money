@@ -57,41 +57,45 @@ function calculate() {
   let adjustedTotal = numPeople * perPerson;
   let reducedTotal = numPeople * perPerson - perPerson;
 
-  // 各要素に対して値を設定
-  document
-    .getElementsByName('perPerson')
-    .forEach((element) => (element.textContent = perPerson));
-  document
-    .getElementsByName('totalToSend')
-    .forEach((element) => (element.textContent = adjustedTotal));
-  document
-    .getElementsByName('totalToSendReduce')
-    .forEach((element) => (element.textContent = reducedTotal));
+  // 各要素に対して値を設定（強調クラス適用）
+  document.getElementsByName('perPerson').forEach((element) => {
+    element.textContent = perPerson;
+    element.classList.add('result-highlight');
+  });
 
-  generateAnnouncementText(perPerson); // アナウンステキストを生成
+  document.getElementsByName('totalToSend').forEach((element) => {
+    element.textContent = adjustedTotal;
+    element.classList.add('result-highlight');
+  });
 
-  // 入力値をlocalStorageに保存
-  localStorage.setItem('totalAmount', totalAmount);
-  localStorage.setItem('numPeople', numPeople);
+  document.getElementsByName('totalToSendReduce').forEach((element) => {
+    element.textContent = reducedTotal;
+    element.classList.add('result-highlight');
+  });
+
+  generateAnnouncementText(perPerson);
 }
 
 // アナウンステキストを生成する関数
 function generateAnnouncementText(perPerson) {
   let collectionName = document.getElementById('collectionName').value.trim();
+  let collectionDate = document.getElementById('collectionDate').value.trim();
   let paymentLink = document.getElementById('paymentLink').value.trim();
 
   if (!collectionName) collectionName = '[集金名]';
+  if (!collectionDate) collectionDate = '[日付]';
   if (!paymentLink) paymentLink = '[請求リンク]';
 
+  // 支払い期限（2週間後）
   let date = new Date();
   date.setDate(date.getDate() + 14);
   let formattedDate = date.toISOString().split('T')[0].replace(/-/g, '/');
 
   const announcementText = `
-【${collectionName}の集金】
+【${collectionDate} ${collectionName}の集金】
 
-お疲れ様です、会計です
-${collectionName}の集金を行いたいと思います
+お疲れ様です、会計です💰
+${collectionDate} ${collectionName}の集金を行いたいと思います
 
 以下をご確認の上、お支払いをお願いいたします
 https://tappy-heartful.github.io/swst-collect-money/member/pay-guide.html
@@ -186,4 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .getElementById('collectionName')
     .addEventListener('input', calculate);
   document.getElementById('paymentLink').addEventListener('input', calculate);
+  document
+    .getElementById('collectionDate')
+    .addEventListener('input', calculate);
 });
