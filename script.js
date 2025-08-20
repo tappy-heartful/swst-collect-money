@@ -79,7 +79,10 @@ function calculate() {
 // アナウンステキストを生成する関数
 function generateAnnouncementText(perPerson) {
   let collectionName = document.getElementById('collectionName').value.trim();
-  let collectionDate = document.getElementById('collectionDate').value.trim();
+  let collectionDate = document
+    .getElementById('collectionDate')
+    .value.trim()
+    .replace(/-/g, '/'); // 日付をスラッシュ区切りに変換
   let paymentLink = document.getElementById('paymentLink').value.trim();
 
   if (!collectionName) collectionName = '[集金名]';
@@ -114,12 +117,15 @@ https://tappy-heartful.github.io/swst-collect-money/member/pay-guide.html
 ・あみさん
 ・えりー
 ・やぶさん
+・やまとくん
+・櫻井くん
 
 〇トロンボーン
-・オザキさん
+・朝廣さん
 ・岡田さん
 ・村上さん
 ・なんちゃん
+・マイオニー
 
 〇トランペット
 ・のぞえさん
