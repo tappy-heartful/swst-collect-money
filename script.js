@@ -140,7 +140,7 @@ function generateAnnouncementText(perPerson) {
       .textContent.trim();
     if (adjustmentInfo && !adjustmentInfo.includes('必要はありません')) {
       adjustmentNote = `
-※今回の集金では参加人数で割り切れなかった端数の${
+⭐今回の集金では、参加人数で割り切れなかった端数の${
         document.getElementById('totalAmount').value -
         perPerson * document.getElementById('numPeople').value
       }円を、ゆやまさんのコラボコーヒーの売上からいただいています
@@ -153,7 +153,6 @@ function generateAnnouncementText(perPerson) {
 
 お疲れ様です、会計です💰
 ${collectionDate} ${collectionName}の集金を行いたいと思います
-${adjustmentNote}
 以下をご確認の上、お支払いをお願いいたします
 https://tappy-heartful.github.io/swst-collect-money/member/pay-guide.html
 
@@ -202,6 +201,8 @@ https://tappy-heartful.github.io/swst-collect-money/member/pay-guide.html
 
 ⭐支払いリンク
 ${paymentLink}
+
+${adjustmentNote}
   `;
 
   const textarea = document.getElementById('announcementText');
