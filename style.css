@@ -25,6 +25,37 @@ h2 {
   text-align: left;
 }
 
+/* 💰 新規追加: チェックボックスグループ */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+}
+
+/* 💰 新規追加: 調整情報のスタイル */
+.adjustment-info {
+    font-size: 14px;
+    color: #555;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.result-info {
+    border: 1px solid #ffcc80; /* オレンジ系の枠線 */
+    background-color: #fff8e1; /* 薄い黄色背景 */
+}
+
 /* 文中の可変部分は下線 */
 p span {
   text-decoration: underline;

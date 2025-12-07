@@ -1,13 +1,18 @@
 function calculate() {
   let totalAmountInput = document.getElementById('totalAmount');
   let numPeopleInput = document.getElementById('numPeople');
+  let useYuyamameCheckbox = document.getElementById('useYuyamame'); // 💰 新規追加
   let totalAmount = parseInt(totalAmountInput.value);
   let numPeople = parseInt(numPeopleInput.value);
   let totalAmountError = document.getElementById('totalAmountError');
   let numPeopleError = document.getElementById('numPeopleError');
   let invalidPeopleError = document.getElementById('invalidPeopleError');
+  let yuyamameAdjustmentInfo = document.getElementById(
+    'yuyamameAdjustmentInfo'
+  ); // 💰 新規追加
 
   let valid = true;
+  yuyamameAdjustmentInfo.textContent = ''; // 初期化
 
   if (isNaN(totalAmount) || totalAmount <= 0) {
     totalAmountInput.classList.add('error');
@@ -47,15 +52,48 @@ function calculate() {
     document
       .getElementsByName('totalToSendReduce')
       .forEach((element) => (element.textContent = '-'));
-    document
-      .getElementsByName('announcementText')
-      .forEach((element) => (element.value = '')); // アナウンステキストを空にする
+    document.getElementById('announcementText').value = ''; // アナウンステキストを空にする
     return;
   }
 
-  let perPerson = Math.ceil(totalAmount / numPeople);
-  let adjustedTotal = numPeople * perPerson;
-  let reducedTotal = numPeople * perPerson - perPerson;
+  let finalTotalAmount = totalAmount; // 最終的な集金総額
+  let perPerson;
+  let adjustmentAmount = 0; // ユヤマメからの調整額
+
+  if (useYuyamameCheckbox.checked) {
+    // 💰 ユヤマメを使用して調整する場合
+    let remainder = totalAmount % numPeople;
+
+    // 端数(余り)が出ないように調整する
+    if (remainder !== 0) {
+      // 1人当たり金額を切り捨てることで余りをゼロにする
+      perPerson = Math.floor(totalAmount / numPeople);
+      finalTotalAmount = perPerson * numPeople;
+      adjustmentAmount = totalAmount - finalTotalAmount;
+
+      // 調整情報を表示
+      yuyamameAdjustmentInfo.innerHTML = `
+            調整前合計金額: ${totalAmount}円<br>
+            調整額 (ユヤマメから): **${adjustmentAmount}円**<br>
+            調整後合計金額: ${finalTotalAmount}円
+        `;
+      yuyamameAdjustmentInfo.classList.add('result-info');
+    } else {
+      // 余りがない場合は調整不要
+      perPerson = totalAmount / numPeople;
+      yuyamameAdjustmentInfo.textContent = `調整の必要はありません。`;
+      yuyamameAdjustmentInfo.classList.remove('result-info');
+    }
+  } else {
+    // 調整しない場合 (既存の切り上げロジック)
+    perPerson = Math.ceil(totalAmount / numPeople);
+    finalTotalAmount = perPerson * numPeople;
+    yuyamameAdjustmentInfo.textContent = '';
+    yuyamameAdjustmentInfo.classList.remove('result-info');
+  }
+
+  // 集金対象者から建替者を引いた人数分の金額
+  let reducedTotal = finalTotalAmount - perPerson;
 
   // 各要素に対して値を設定（強調クラス適用）
   document.getElementsByName('perPerson').forEach((element) => {
@@ -64,7 +102,7 @@ function calculate() {
   });
 
   document.getElementsByName('totalToSend').forEach((element) => {
-    element.textContent = adjustedTotal;
+    element.textContent = finalTotalAmount;
     element.classList.add('result-highlight');
   });
 
@@ -94,12 +132,28 @@ function generateAnnouncementText(perPerson) {
   date.setDate(date.getDate() + 14);
   let formattedDate = date.toISOString().split('T')[0].replace(/-/g, '/');
 
+  const useYuyamameCheckbox = document.getElementById('useYuyamame');
+  let adjustmentNote = '';
+  if (useYuyamameCheckbox && useYuyamameCheckbox.checked) {
+    const adjustmentInfo = document
+      .getElementById('yuyamameAdjustmentInfo')
+      .textContent.trim();
+    if (adjustmentInfo && !adjustmentInfo.includes('必要はありません')) {
+      adjustmentNote = `
+※今回の集金では参加人数で割り切れなかった端数の${
+        document.getElementById('totalAmount').value -
+        perPerson * document.getElementById('numPeople').value
+      }円を、ゆやまさんのコラボコーヒーの売上からいただいています
+`;
+    }
+  }
+
   const announcementText = `
 【${collectionDate} ${collectionName}の集金】
 
 お疲れ様です、会計です💰
 ${collectionDate} ${collectionName}の集金を行いたいと思います
-
+${adjustmentNote}
 以下をご確認の上、お支払いをお願いいたします
 https://tappy-heartful.github.io/swst-collect-money/member/pay-guide.html
 
@@ -192,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // 入力イベントの追加
   document.getElementById('totalAmount').addEventListener('input', calculate);
   document.getElementById('numPeople').addEventListener('input', calculate);
+  document.getElementById('useYuyamame').addEventListener('change', calculate); // 💰 新規追加
   document
     .getElementById('collectionName')
     .addEventListener('input', calculate);
